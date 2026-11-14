@@ -91,7 +91,23 @@ object Gen1Art {
         playerSprite = 0x05 to 0x4571,         // RedSprite: 16x16 frames of 4 tiles (TL, TR, BL, BR)
         playerPath = YELLOW_PLAYER,
     )
-    val YELLOW_RELOAD = YELLOW.copy(sha1 = TelemetrySampler.YELLOW_RELOAD_SHA1)
+    val YELLOW_RELOAD = Gen1ArtTables(
+        sha1 = TelemetrySampler.YELLOW_RELOAD_SHA1,
+        font = YELLOW.font,
+        fontPath = YELLOW.fontPath,
+        iconPointers = YELLOW.iconPointers,
+        iconPointerCount = YELLOW.iconPointerCount,
+        monPartyData = YELLOW.monPartyData,
+        dexCount = YELLOW.dexCount,
+        iconsDir = YELLOW.iconsDir,
+        iconColors = YELLOW.iconColors,
+        townMap = YELLOW.townMap,
+        townMapTiles = YELLOW.townMapTiles,
+        townMapPath = YELLOW.townMapPath,
+        townMapColors = YELLOW.townMapColors,
+        playerSprite = YELLOW.playerSprite,
+        playerPath = YELLOW.playerPath,
+    )
 
     /**
      * The German, French, Italian and Spanish Yellows: English's art, some of it moved (scripts/port_gen1.py,
