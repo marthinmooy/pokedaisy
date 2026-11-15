@@ -807,7 +807,8 @@ class TelemetrySampler {
         }
         val hash = if (off == size && size > 0) digest.digest().joinToString("") { "%02x".format(it) } else null
         when {
-            GAME_BOY_SUPPORT && (hash == RED_SHA1 || hash == RED_RELOAD_SHA1) -> { kind = GameKind.RED; gen1Cfg = GEN1_RED }
+            GAME_BOY_SUPPORT && hash == RED_SHA1 -> { kind = GameKind.RED; gen1Cfg = GEN1_RED }
+            GAME_BOY_SUPPORT && hash == RED_RELOAD_SHA1 -> { kind = GameKind.RED; gen1Cfg = GEN1_RED_RELOAD }
             GAME_BOY_SUPPORT && hash == BLUE_SHA1 -> { kind = GameKind.BLUE; gen1Cfg = GEN1_BLUE }
             GAME_BOY_SUPPORT && hash == PURE_RED_V2_7_6_SHA1 -> { kind = GameKind.PURE_RED; gen1Cfg = GEN1_PURE_RED }
             GAME_BOY_SUPPORT && hash == PURE_BLUE_V2_7_6_SHA1 -> { kind = GameKind.PURE_BLUE; gen1Cfg = GEN1_PURE_BLUE }
@@ -1189,7 +1190,8 @@ class TelemetrySampler {
 
         /** A Yellow cart's config by its hash, or null for any other Game Boy game. */
         fun gen1ConfigFor(hash: String?): Gen1Config? = when (hash) {
-            YELLOW_SHA1, YELLOW_RELOAD_SHA1 -> GEN1_YELLOW
+            YELLOW_SHA1 -> GEN1_YELLOW
+            YELLOW_RELOAD_SHA1 -> GEN1_YELLOW_RELOAD
             YELLOW_DE_SHA1 -> GEN1_YELLOW_DE
             YELLOW_FR_SHA1 -> GEN1_YELLOW_FR
             YELLOW_IT_SHA1 -> GEN1_YELLOW_IT
